@@ -26,7 +26,7 @@
               编程式路由跳转
            */
           navToggle(path){
-            this.$router.push(path);
+            path !== this.$route.path && this.$router.replace(path);
           }
       }
   }
@@ -42,6 +42,9 @@
   left 0
   bottom 0
   width 100%
+  height 50px
+  background-color #fff
+  
   /* 导航的每一项 */
   .navItem
     display flex
