@@ -63,3 +63,9 @@ export const autoLogin = ()=> myAxios({
         needToken: true
     }
 });
+
+//8、模拟mock
+/* export const getShopData = ()=> myAxios({
+    url: '/getShopData',
+}); */
+export const getShopData = ()=> myAxios('/getShopData');

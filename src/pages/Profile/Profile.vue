@@ -51,7 +51,7 @@
       <!-- 我的订单 -->
       <a href="javascript:" class="my_order">
         <span>
-          <i class="iconfont icon-order-s"></i>
+          <i class="iconfont icon-dingdan"></i>
         </span>
         <div class="my_order_div">
           <span>我的订单</span>

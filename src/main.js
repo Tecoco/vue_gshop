@@ -6,6 +6,7 @@ import store from './store'
 import {Button} from 'mint-ui'
 
 import App from './App.vue'
+import './mock/mockServer'
 import GshopHeader from './components/GshopHeader/GshopHeader.vue'
 import * as API from './api'
 
