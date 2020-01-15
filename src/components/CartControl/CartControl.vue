@@ -12,10 +12,10 @@
 <script type="text/ecmascript-6">
   export default {
       props: {
-          food: {
-              type: Object,
-              required: true
-          }
+        food: {
+            type: Object,
+            required: true
+        }
       },
       methods: {
         changeFoodCount(isAdd){
@@ -34,10 +34,10 @@
         color $green
         /* 针对移入移出过渡 */
         &.move-enter-active,&.move-leave-active
-            transition all 0.5s
+          transition all 0.5s
         &.move-enter,&.move-leave-to
-            transform translateX(20px) rotate(180deg)
-            opacity 0
+          transform translateX(20px) rotate(180deg)
+          opacity 0
     .cart-count
         display: inline-block
         width: 14px

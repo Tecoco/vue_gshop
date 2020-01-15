@@ -35,6 +35,7 @@
         </ul>
       </div>
     </div>
+    <ShopCart />
   </div>
 </template>
 
@@ -43,10 +44,12 @@
 import BScroll from 'better-scroll'
 import {mapState} from 'vuex'
 import CartControl from '../../../components/CartControl/CartControl'
+import ShopCart from '../../../components/ShopCart/ShopCart'
 
 export default {
   components: {
-    CartControl
+    CartControl, //添加或删除商品
+    ShopCart //购物车
   },
   data(){
     return {
@@ -89,7 +92,11 @@ export default {
   },
   methods: {
     _initScroll(){
-       //类似之前封装的swiper，一样的用法，可以去gitHub搜索
+      if(this.leftScroll || this.rightScroll){
+        // this.leftScroll.refresh(); //在BScroll的实例上有这个方法refresh()，刷新，重新获取content的高度/宽度
+        // this.rightScroll.refresh();
+      }else{
+         //类似之前封装的swiper，一样的用法，可以去gitHub搜索
         this.leftScroll = new BScroll('.leftWrap', {
           scrollY: true,
           click: true
@@ -111,6 +118,8 @@ export default {
         this.rightScroll.on('scrollEnd', ({x, y})=>{
           this.scrollY = Math.abs(y);
         });
+     }
+     
     },
      _initTop(){
        //获取右侧的所有li节点
@@ -158,7 +167,8 @@ export default {
   #goodContainer
     display flex
     overflow hidden
-    height calc(100vh - 224px)
+    // height calc(100vh - 224px)
+    height calc(100vh - 272px) //加了购物车，需要再额外减去它的高度48px
     .leftWrap
       width 80px
       //方式一

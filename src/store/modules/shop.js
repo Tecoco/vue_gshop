@@ -1,5 +1,11 @@
 import Vue from 'vue'
-import {SAVE_SHOPDATE, ADD_FOOD_COUNT, DEL_FOOD_COUNT} from '../mutations_types'
+import {
+    SAVE_SHOPDATE, 
+    ADD_FOOD_COUNT, 
+    DEL_FOOD_COUNT,
+    CLEAR_SHOPCART,
+    SAVE_CARTSHOP
+} from '../mutations_types'
 import {getShopData} from '../../api'
 
 const state = {
@@ -26,7 +32,17 @@ const mutations = {
                 state.cartShop.splice(state.cartShop.indexOf(food), 1);
             }
         }
-    }
+    },
+    //清空购物车
+    [CLEAR_SHOPCART](state){
+        //将cartShop中所有food.count>0的项修改为0，这样才会实现显示的购物车的数量和添加/删除的操作保持一致
+        state.cartShop.forEach(food => food.count = 0);
+        state.cartShop = [];
+    },
+    //保存food.count>0的对象到cartShop中
+    [SAVE_CARTSHOP](state, cartShop){
+        state.cartShop = cartShop;
+    },
 };
 
 const actions = {
@@ -45,6 +61,18 @@ const actions = {
 };
 
 const getters = {
+    //计算count总数
+    totalCount(state){
+        return state.cartShop.reduce((pre, food)=>{
+            return pre += food.count;
+            }, 0);
+    },
+    //计算总价格
+    totalPrice(state){
+        return state.cartShop.reduce((pre, food)=>{
+            return pre += food.count*food.price;
+            }, 0);
+    }
 
 };
 

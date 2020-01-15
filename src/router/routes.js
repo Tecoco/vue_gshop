@@ -1,10 +1,18 @@
 /* 管理路由 */
-import Msite from '../pages/Msite/Msite'
+//一般加载方式
+/* import Msite from '../pages/Msite/Msite'
 import Search from '../pages/Search/Search'
 import Order from '../pages/Order/Order'
 import Profile from '../pages/Profile/Profile'
 import Login from '../pages/Login/Login'
-import Shop from '../pages/Shop/Shop'
+import Shop from '../pages/Shop/Shop' */
+//路由组件懒加载： es10---核心技术还是es6---import()函数
+const Msite = ()=> import('../pages/Msite/Msite');
+const Search = ()=> import('../pages/Search/Search');
+const Order = ()=> import('../pages/Order/Order');
+const Profile = ()=> import('../pages/Profile/Profile');
+const Login = ()=> import('../pages/Login/Login');
+const Shop = ()=> import('../pages/Shop/Shop');
 
 import Good from '../pages/Shop/Good/Good'
 import Rating from '../pages/Shop/Rating/Rating'
